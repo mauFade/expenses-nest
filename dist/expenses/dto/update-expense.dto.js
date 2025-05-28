@@ -16,25 +16,25 @@ class UpdateExpenseDto {
 }
 exports.UpdateExpenseDto = UpdateExpenseDto;
 __decorate([
-    (0, swagger_1.ApiProperty)({ description: 'Title of the expense', required: false }),
+    (0, swagger_1.ApiProperty)({ description: "Title of the expense", required: false }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], UpdateExpenseDto.prototype, "title", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ description: 'Amount of the expense', required: false }),
+    (0, swagger_1.ApiProperty)({ description: "Amount of the expense", required: false }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], UpdateExpenseDto.prototype, "amount", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ description: 'Category of the expense', required: false }),
+    (0, swagger_1.ApiProperty)({ description: "Category of the expense", required: false }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], UpdateExpenseDto.prototype, "category", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ description: 'Date of the expense', required: false }),
+    (0, swagger_1.ApiProperty)({ description: "Date of the expense", required: false }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsDate)(),
     __metadata("design:type", Date)

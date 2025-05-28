@@ -40,8 +40,6 @@ npm install
 cp .env.example .env
 ```
 
-Edite o arquivo `.env` com suas credenciais de banco de dados e Redis.
-
 4. Inicie os serviços com Docker Compose:
 
 ```bash
@@ -57,12 +55,7 @@ npx prisma migrate dev
 6. Inicie a aplicação:
 
 ```bash
-# Desenvolvimento
 npm run start:dev
-
-# Produção
-npm run build
-npm run start:prod
 ```
 
 ## Documentação da API
@@ -97,7 +90,7 @@ Para acessar qualquer endpoint protegido, é obrigatório enviar o header HTTP `
 Basta adicionar o header:
 
 ```
-Authorization: Bearer qualquercoisa
+Authorization: Bearer 'qualquercoisa'
 ```
 
 Exemplo com curl:
@@ -114,21 +107,6 @@ Se o header não for enviado ou estiver vazio, a API retorna 401 Unauthorized.
 - `REDIS_URL`: String de conexão do Redis
 - `JWT_SECRET`: Chave secreta para tokens JWT (não é usada para validação real)
 - `PORT`: Porta da aplicação (padrão: 3000)
-
-## Estrutura do Projeto
-
-```
-src/
-├── expenses/           # Módulo de despesas
-│   ├── dto/           # Objetos de Transferência de Dados
-│   ├── expenses.controller.ts
-│   ├── expenses.service.ts
-│   └── expenses.module.ts
-├── prisma/            # Configuração do Prisma
-│   └── schema.prisma
-├── app.module.ts      # Módulo raiz
-└── main.ts           # Ponto de entrada da aplicação
-```
 
 ## Endpoints da API
 
@@ -152,21 +130,3 @@ O projeto inclui um arquivo `docker-compose.yml` que configura:
 
 - PostgreSQL 15
 - Redis 7
-
-Para iniciar os serviços:
-
-```bash
-docker-compose up -d
-```
-
-Para parar os serviços:
-
-```bash
-docker-compose down
-```
-
-Para parar os serviços e remover os volumes (isso apagará todos os dados):
-
-```bash
-docker-compose down -v
-```
