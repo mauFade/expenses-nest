@@ -17,14 +17,14 @@ Uma API RESTful construída com NestJS, Prisma ORM e PostgreSQL para gerenciar d
 - PostgreSQL
 - Redis
 - npm ou yarn
-- Docker e Docker Compose (opcional)
+- Docker e Docker Compose
 
 ## Instalação
 
 1. Clone o repositório:
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/mauFade/expenses-nest
 cd expenses
 ```
 
@@ -135,7 +135,3 @@ Para parar os serviços e remover os volumes (isso apagará todos os dados):
 ```bash
 docker-compose down -v
 ```
-
-## Licença
-
-MIT
