@@ -13,7 +13,10 @@ export class ExpensesService {
 
   async create(createExpenseDto: CreateExpenseDto) {
     const expense = await this.prisma.expense.create({
-      data: createExpenseDto,
+      data: {
+        ...createExpenseDto,
+        date: new Date(),
+      },
     });
     await this.invalidateCache();
     return expense;
