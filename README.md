@@ -6,7 +6,7 @@ Uma API RESTful construída com NestJS, Prisma ORM e PostgreSQL para gerenciar d
 
 - Operações CRUD para despesas
 - Filtro de despesas por data e categoria
-- Autenticação JWT
+- Autenticação JWT (simulada, apenas exige header Authorization)
 - Cache com Redis
 - Documentação Swagger
 - Banco de dados PostgreSQL com Prisma ORM
@@ -73,11 +73,46 @@ Quando a aplicação estiver rodando, você pode acessar a documentação Swagge
 http://localhost:3000/api
 ```
 
+## Autenticação (Header Authorization)
+
+Para acessar qualquer endpoint protegido, é obrigatório enviar o header HTTP `Authorization` no formato Bearer, com qualquer valor de token. **O valor do token não é validado, apenas precisa existir.**
+
+### Como autenticar no Swagger
+
+1. Clique no botão "Authorize" no topo da documentação Swagger.
+2. No campo "Value", digite qualquer valor, por exemplo:
+   ```
+   Bearer teste123
+   ```
+   ou apenas:
+   ```
+   teste123
+   ```
+   (O Swagger geralmente adiciona o "Bearer " automaticamente.)
+3. Clique em "Authorize" e depois em "Close".
+4. Agora você pode testar os endpoints normalmente.
+
+### Como autenticar em outras ferramentas (ex: Postman, curl)
+
+Basta adicionar o header:
+
+```
+Authorization: Bearer qualquercoisa
+```
+
+Exemplo com curl:
+
+```bash
+curl -H "Authorization: Bearer tokenqualquer" http://localhost:3000/expenses
+```
+
+Se o header não for enviado ou estiver vazio, a API retorna 401 Unauthorized.
+
 ## Variáveis de Ambiente
 
 - `DATABASE_URL`: String de conexão do PostgreSQL
 - `REDIS_URL`: String de conexão do Redis
-- `JWT_SECRET`: Chave secreta para tokens JWT
+- `JWT_SECRET`: Chave secreta para tokens JWT (não é usada para validação real)
 - `PORT`: Porta da aplicação (padrão: 3000)
 
 ## Estrutura do Projeto

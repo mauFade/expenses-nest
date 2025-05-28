@@ -26,7 +26,7 @@ let ExpensesService = class ExpensesService {
         return expense;
     }
     async findAll(month, year, category) {
-        const cacheKey = `expenses:${month}:${year}:${category}`;
+        const cacheKey = `expenses:${month || "all"}:${year || "all"}:${category || "all"}`;
         const cached = await this.redis.get(cacheKey);
         if (cached) {
             return JSON.parse(cached);

@@ -23,7 +23,7 @@ export class ExpensesService {
   }
 
   async findAll(month?: string, year?: string, category?: string) {
-    const cacheKey = `expenses:${month}:${year}:${category}`;
+    const cacheKey = `expenses:${month || "all"}:${year || "all"}:${category || "all"}`;
     const cached = await this.redis.get(cacheKey);
 
     if (cached) {

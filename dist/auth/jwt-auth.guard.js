@@ -8,8 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JwtAuthGuard = void 0;
 const common_1 = require("@nestjs/common");
-const passport_1 = require("@nestjs/passport");
-let JwtAuthGuard = class JwtAuthGuard extends (0, passport_1.AuthGuard)('jwt') {
+let JwtAuthGuard = class JwtAuthGuard {
+    canActivate(context) {
+        const request = context.switchToHttp().getRequest();
+        const authHeader = request.headers["authorization"] || request.headers["Authorization"];
+        if (!authHeader ||
+            typeof authHeader !== "string" ||
+            !authHeader.startsWith("Bearer ") ||
+            !authHeader.slice(7).trim()) {
+            throw new common_1.UnauthorizedException("Bearer token is missing or empty");
+        }
+        return true;
+    }
 };
 exports.JwtAuthGuard = JwtAuthGuard;
 exports.JwtAuthGuard = JwtAuthGuard = __decorate([
